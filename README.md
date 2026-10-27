@@ -12,7 +12,9 @@
 
 Correspondence: [huynh.d.n.tran@jyu.fi](mailto:huynh.d.n.tran@jyu.fi)
 
-[🤗 GoiBERT-base](https://huggingface.co/2HeartsVN/GoiBERT-S) · [🤗 GoiBERT-large](https://huggingface.co/2HeartsVN/GoiBERT-M) · [Corpus card](release/goi-corpus-v2/README.md)
+[🤗 GoiBERT-base](https://huggingface.co/TwoheartsTechnologies/GoiBERT-S) · [🤗 GoiBERT-large](https://huggingface.co/TwoheartsTechnologies/GoiBERT-M) · [Corpus card](release/goi-corpus-v2/README.md)
+
+[Paper](https://arxiv.org/abs/2610.30067) · [GoiBERT at Nôm Lab](https://nomlab.vn/research/goibert) · [Tiếng Việt](https://nomlab.vn/research/goibert?lang=vi)
 
 </div>
 
@@ -41,8 +43,8 @@ Across eight benchmarks covering text classification, aspect-based sentiment ana
 
 | Model (paper name) | Hub ID | Layers | Hidden | Heads | FFN | Params | Embedding share |
 |---|---|---:|---:|---:|---:|---:|---:|
-| GoiBERT-base | [`2HeartsVN/GoiBERT-S`](https://huggingface.co/2HeartsVN/GoiBERT-S) | 10 | 384 | 6 | 1,536 | 26.4M | 33% |
-| GoiBERT-large | [`2HeartsVN/GoiBERT-M`](https://huggingface.co/2HeartsVN/GoiBERT-M) | 12 | 512 | 8 | 2,048 | 49.4M | 23% |
+| GoiBERT-base | [`TwoheartsTechnologies/GoiBERT-S`](https://huggingface.co/TwoheartsTechnologies/GoiBERT-S) | 10 | 384 | 6 | 1,536 | 26.4M | 33% |
+| GoiBERT-large | [`TwoheartsTechnologies/GoiBERT-M`](https://huggingface.co/TwoheartsTechnologies/GoiBERT-M) | 12 | 512 | 8 | 2,048 | 49.4M | 23% |
 
 Both models follow the RoBERTa encoder architecture. They use BamiBERT's 20,481-token tokenizer and 64-dimensional attention heads. The released checkpoints are the backbone encoders after general distillation (Stage 1) and have no task head. Distillation used sequences of at most 256 tokens, so we recommend `max_length=256`.
 
@@ -51,8 +53,8 @@ Both models follow the RoBERTa encoder architecture. They use BamiBERT's 20,481-
 ```python
 from transformers import AutoTokenizer, AutoModel
 
-tokenizer = AutoTokenizer.from_pretrained("2HeartsVN/GoiBERT-M")
-model = AutoModel.from_pretrained("2HeartsVN/GoiBERT-M")
+tokenizer = AutoTokenizer.from_pretrained("TwoheartsTechnologies/GoiBERT-M")
+model = AutoModel.from_pretrained("TwoheartsTechnologies/GoiBERT-M")
 
 inputs = tokenizer("Sản phẩm dùng tốt, giao hàng nhanh.", return_tensors="pt",
                    truncation=True, max_length=256)
